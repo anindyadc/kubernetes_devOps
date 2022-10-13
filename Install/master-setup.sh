@@ -64,10 +64,10 @@ sudo apt update
 sudo apt install -y containerd.io
 
 # Configure containerd and start service
-sudo su -
-mkdir -p /etc/containerd
-containerd config default>/etc/containerd/config.toml
-
+echo "sudo su -"
+echo "mkdir -p /etc/containerd"
+echo "containerd config default>/etc/containerd/config.toml"
+read -p "Run above commands from root in seperate window ..." data
 # restart containerd
 sudo systemctl restart containerd
 sudo systemctl enable containerd
@@ -105,3 +105,6 @@ kubectl get pods -n kube-flannel
 read -p "Press any key to resume ..." data
 #Confirm master node is ready
 kubectl get nodes -o wide
+#Install ngnix-ingress
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.4.0/deploy/static/provider/baremetal/deploy.yaml
+kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
