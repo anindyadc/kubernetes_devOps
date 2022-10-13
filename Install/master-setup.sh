@@ -93,7 +93,14 @@ read -p "Press any key to resume ..." data
 #----------------------------------------
 wget https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml
 kubectl apply -f kube-flannel.yml
-read -p "Press any key to resume ..." data
+# Check /etc/containerd/config.toml
+echo "Check /etc/containerd/config.toml"
+echo "[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]"
+echo "  ... "
+echo "  [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options] "
+echo "    SystemdCgroup = true "
+ehco " Check 114 line !! "
+read -p "Check /etc/containerd/config.toml" data
 kubectl get pods -n kube-flannel
 read -p "Press any key to resume ..." data
 #Confirm master node is ready
