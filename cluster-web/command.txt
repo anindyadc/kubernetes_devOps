@@ -1,0 +1,23 @@
+Create Cluster:
+kubectl create -f nginx.yml
+kubectl create service clusterip nginx --tcp=80:80
+kubectl create -f apache.yml
+kubectl create service clusterip apache --tcp=80:80
+kubectl create -f ingress.yml
+
+Verify/Troubleshoot:
+kubectl get svc
+kubectl get svc -o wide
+kubectl get po --all-namespace
+kubectl get svc --all-namespaces
+kubectl describe ingress minimal-ingress
+kubectl logs ingress-nginx-controller-58d76857b9-mh4j2 -n ingress-nginx
+
+Edit
+kubectl edit ingress
+kubectl edit deployment
+kubectl edit service
+
+Delete:
+kubectl delete pod nginx-7fb96c846b-ccczp
+kubectl delete service  apache
