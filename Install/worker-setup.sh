@@ -75,6 +75,6 @@ echo "[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]"
 echo "  ... "
 echo "  [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options] "
 echo "    SystemdCgroup = true "
-ehco " Check 114 line !! "
+echo " Check 114 line !! "
 read -p "Check /etc/containerd/config.toml" data
 sudo systemctl restart containerd
