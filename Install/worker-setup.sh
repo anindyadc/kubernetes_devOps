@@ -61,10 +61,10 @@ sudo apt update
 sudo apt install -y containerd.io
 
 # Configure containerd and start service
-sudo su -
-mkdir -p /etc/containerd
-containerd config default>/etc/containerd/config.toml
-
+echo "sudo su - "
+echo "mkdir -p /etc/containerd"
+echo "containerd config default>/etc/containerd/config.toml"
+read -p "Check /etc/containerd/config.toml" data
 # restart containerd
 sudo systemctl restart containerd
 sudo systemctl enable containerd
@@ -77,4 +77,4 @@ echo "  [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options] "
 echo "    SystemdCgroup = true "
 ehco " Check 114 line !! "
 read -p "Check /etc/containerd/config.toml" data
-
+sudo systemctl restart containerd
